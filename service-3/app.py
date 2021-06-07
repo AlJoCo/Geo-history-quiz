@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-@app.route('/date', methods=['GET'])
+@app.route('/get_date', methods=['GET'])
 def date():
     date = str(random.randrange(-2000, 2000))
     return date

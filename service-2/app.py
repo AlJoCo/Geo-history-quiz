@@ -3,7 +3,7 @@ import random
 
 app = Flask(__name__)
 
-@app.route('/coords', methods=['GET'])
+@app.route('/get_coords', methods=['GET'])
 def coords():
     x = str(random.randrange(-85, 85))
     y = str(random.randrange(-180, 180))
