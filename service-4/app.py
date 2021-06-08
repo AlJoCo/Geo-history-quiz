@@ -22,3 +22,5 @@ def submission():
         db.session.add(new_entry)
         db.session.commit()
     return render_template('home.html', queryall=queryall, form=form)
+
+if __name__ == "__main__": app.run(host="0.0.0.0", port=5000, debug=True)

@@ -28,5 +28,4 @@ def home():
     date = requests.get('service-3:5000/get_date').json()
     return render_template('home.html',coords=coords,date=date)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == "__main__": app.run(host="0.0.0.0", port=5000, debug=True)
