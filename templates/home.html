@@ -4,11 +4,19 @@
 
 <p>
     You are at co-ordinates: {{ coords }} in the year {{ date }}.
-    Are you likely to perish?
+    Could you survive for a year there at that time?
     <br>
-    {{ form.label }} {{ form }}
+    {{ form.label }} {{ form.form }}
     <br>
     {{ form.submit }}
 </p>
+
+<h4>
+    Previous Results:
+</h4>
+{% for id in queryall %}
+{{ id.Coords }} {{ id.Date }} {{ id.Survivable }}
+<br>
+{% endfor %}
 
 {% endblock body %}

@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/get_date', methods=['GET'])
 def date():
-    date = str(random.randrange(-2000, 2000))
+    date = random.randrange(-2000, 2000)
     return date
 
 if __name__ == "__main__":
