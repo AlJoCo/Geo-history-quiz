@@ -3,3 +3,10 @@ requests
 flask-SQLAlchemy
 SQLAlchemy
 pymysql
+wtforms
+pytest
+flask_testing
+flask-WTF
+itsdangerous
+Jinja2
+MarkupSafe

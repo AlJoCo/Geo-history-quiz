@@ -16,28 +16,35 @@ db = SQLAlchemy(app)
 
 class Storage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    Coords = db.Column(db.String(50), nullable=False)
+    Coords = db.Column(db.Integer, nullable=False)
+    Coords2 = db.Column(db.Integer, nullable=False)
     Date = db.Column(db.Integer, nullable=False)
-    Survivable = db.Column(db.Boolean)
+    # Survivable = db.Column(db.Boolean)
 
-class Form(FlaskForm):
-    Survivable = BooleanField("Could you survive?")
-    Submit = SubmitField("Submit")
+# class Form(FlaskForm):
+#     Survivable = BooleanField("Could you survive?")
+#     Submit = SubmitField("Submit")
 
 @app.route('/')
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-    coords = requests.get('http://service-2:5000/get_coords').text
+    coords = requests.get('http://service-2:5000/get_coords').json()
     date = requests.get('http://service-3:5000/get_date').json()
-    form = Form()
+    hint = requests.post('http://service-4:5000/get_hint', 
+    json={'x':coords['coordinates'][0],
+    'y':coords['coordinates'][1]}).json()
+    prompt = requests.get('http://service-4:5000/get_hint').text
+    #form = Form()
     queryall = Storage.query.all()
     #if form.validate_on_submit():
-    new_entry = Storage(Coords=coords,Date=date
+    coords1 = (coords['coordinates'][0])
+    coords2 = (coords['coordinates'][1])
+    new_entry = Storage(Coords=coords1,Coords2=coords2,Date=date
     #,Survivable=form.data
     )
     db.session.add(new_entry)
     db.session.commit()
-    return render_template('home.html',coords=coords, date=date, queryall=queryall
+    return render_template('home.html',coords1=coords1, coords2=coords2, date=date, queryall=queryall, prompt=prompt
     #,form=form
     )
 
