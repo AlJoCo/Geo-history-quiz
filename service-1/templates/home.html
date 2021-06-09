@@ -6,16 +6,13 @@
     You are at co-ordinates: {{ coords }} in the year {{ date }}.
     Could you survive for a year there at that time?
     <br>
-    {{ form.Survivable.label }} {{ form.Survivable }}
-    <br>
-    {{ form.Submit }}
 </p>
 
 <h4>
     Previous Results:
 </h4>
 {% for id in queryall %}
-{{ id.Coords }} {{ id.Date }} {{ id.Survivable }}
+{{ id.Coords }} in {{ id.Date }}
 <br>
 {% endfor %}
 

@@ -17,7 +17,7 @@ db = SQLAlchemy(app)
 class Storage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     Coords = db.Column(db.String(50), nullable=False)
-    Date = db.Column(db.String(50), nullable=False)
+    Date = db.Column(db.Integer, nullable=False)
     Survivable = db.Column(db.Boolean)
 
 class Form(FlaskForm):
@@ -31,11 +31,15 @@ def home():
     date = requests.get('http://service-3:5000/get_date').json()
     form = Form()
     queryall = Storage.query.all()
-    if form.validate_on_submit():
-        new_entry = Storage(Coords = coords, Date = date, Survivable = form.data)
-        db.session.add(new_entry)
-        db.session.commit()
-    return render_template('home.html',coords=coords, date=date, queryall=queryall, form=form)
+    #if form.validate_on_submit():
+    new_entry = Storage(Coords=coords,Date=date
+    #,Survivable=form.data
+    )
+    db.session.add(new_entry)
+    db.session.commit()
+    return render_template('home.html',coords=coords, date=date, queryall=queryall
+    #,form=form
+    )
 
 if __name__ == "__main__": 
     app.run(host="0.0.0.0", port=5000, debug=True)
