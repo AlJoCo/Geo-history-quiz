@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo build'
+                sh 'docker-compose build'
             }
         }
         stage('Push') {
             steps {
-                sh 'echo build'
+                sh 'docker-compose push'
             }
         }
         stage('Configuration Management') {
