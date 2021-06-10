@@ -3,16 +3,17 @@
 {% block body %}
 
 <p>
-    You are at co-ordinates: {{ coords }} in the year {{ date }}.
+    You are at co-ordinates: {{ coords1 }}, {{ coords2 }} in the year {{ date }}.
     Could you survive for a year there at that time?
     <br>
+    (Hint: it's in {{ hint }}!)
 </p>
 
 <h4>
     Previous Results:
 </h4>
 {% for id in queryall %}
-{{ id.Coords }} in {{ id.Date }}
+{{ id.Coords }}, {{ id.Coords2 }} in {{ id.Date }}
 <br>
 {% endfor %}
 
