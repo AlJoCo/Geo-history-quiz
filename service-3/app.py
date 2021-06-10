@@ -4,7 +4,7 @@ import random
 app = Flask(__name__)
 
 @app.route('/get_date', methods=['GET', 'POST'])
-def date():
+def Date():
     date = random.randrange(-2000, 2000)
     return jsonify(date)
 

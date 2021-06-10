@@ -3,27 +3,30 @@ pipeline {
     stages {
         stage('Test') {
             steps {
-                pytest --cov
+                //sh 'bash jenkins/test.sh'
+                sh 'echo test'
             }
         }
         stage('Build') {
             steps {
-                docker-compose build
+                sh 'docker-compose build'
             }
         }
         stage('Push') {
             steps {
-                docker-compose push
+                sh 'docker-compose push'
             }
         }
         stage('Configuration Management') {
             steps {
-                ansible-playbook -i inventory.yaml playbook.yaml
+                //ansible-playbook -i inventory.yaml playbook.yaml
+                sh 'echo config'
             }
         }
         stage('Deploy') {
             steps {
                 //create swarm infastructure
+                sh 'echo deploy'
             }
         }
     }
