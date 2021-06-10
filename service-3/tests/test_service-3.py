@@ -1,7 +1,7 @@
 from flask import url_for
 from flask_testing import TestCase
 
-from service-3.app import app, date
+from app import app, date
 
 class TestBase(TestCase):
     def create_app(self):

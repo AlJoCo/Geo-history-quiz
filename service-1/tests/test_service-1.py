@@ -1,3 +1,4 @@
+import flask
 from flask import url_for
 from flask_testing import TestCase
 import requests_mock
@@ -9,12 +10,12 @@ class TestBase(TestCase):
         return app
 
 class TestHome(TestBase):
-    def test_Home():
+    def test_Home(self):
         with requests_mock.Mocker() as mocker:
             mocker.get('http://service-2:5000/get_coords', json=[51,0])
             mocker.get('http://service-3:5000/get_date', json=2000)
-            mocker.post('http://service-4:5000/get_hint', test='Europe')
+            mocker.post('http://service-4:5000/get_hint', text='Europe')
             response = self.client.get(url_for('home'))
             self.assertEqual(response.status_code, 200)
-            self.assertIn(b'You are at co-ordinates: 51,0 in the year 2000.', response.data)
+            self.assertIn(b'You are at co-ordinates: 51, 0 in the year 2000.', response.data)
             self.assertIn(b"(Hint: it's in Europe!)", response.data)

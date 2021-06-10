@@ -6,15 +6,15 @@ app = Flask(__name__)
 def Hint():
     coordinates = request.get_json()
     if coordinates['x'] > 72:
-        hint = "Arctic"
+        hint = "The Arctic"
         return hint
     elif coordinates['x'] < -60:
-        hint = "Antarctic"
+        hint = "Antarctica"
         return hint
     elif coordinates['x'] > 34 and coordinates['y'] > -33:
         hint = "Europe"
         return hint
-    elif coordinates['x'] < 35 and coordinates['y'] > -33:
+    elif coordinates['x'] < 35 and coordinates['y'] > -33 and coordinates['y'] < 61:
         hint = "Africa & Middle East"
         return hint
     elif coordinates['y'] < -32:

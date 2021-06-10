@@ -5,6 +5,7 @@ SQLAlchemy
 pymysql
 wtforms
 pytest
+pytest-cov
 flask_testing
 flask-WTF
 itsdangerous

@@ -32,10 +32,9 @@ def home():
     date = requests.get('http://service-3:5000/get_date').json()
     hint = requests.post('http://service-4:5000/get_hint', 
     json={'x':coords['coordinates'][0],
-    'y':coords['coordinates'][1]}).json()
-    prompt = requests.get('http://service-4:5000/get_hint').text
+    'y':coords['coordinates'][1]}).text
     #form = Form()
-    queryall = Storage.query.all()
+    queryall = Storage.query.order_by(Storage.id.desc()).all()
     #if form.validate_on_submit():
     coords1 = (coords['coordinates'][0])
     coords2 = (coords['coordinates'][1])
@@ -44,7 +43,7 @@ def home():
     )
     db.session.add(new_entry)
     db.session.commit()
-    return render_template('home.html',coords1=coords1, coords2=coords2, date=date, queryall=queryall, prompt=prompt
+    return render_template('home.html',coords1=coords1, coords2=coords2, date=date, queryall=queryall, hint=hint
     #,form=form
     )
 
