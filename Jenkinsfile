@@ -32,8 +32,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                //create swarm infastructure
-                sh 'echo deploy'
+                sh 'bash jenkins/deploy.sh'
             }
         }
     }
