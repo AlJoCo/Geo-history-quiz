@@ -11,7 +11,7 @@ def Hint():
     elif coordinates['x'] < -60:
         hint = "Antarctica"
         return hint
-    elif coordinates['x'] > 34 and coordinates['y'] > -33:
+    elif coordinates['x'] > 34 and coordinates['y'] > -33 and coordinates['y'] < 46:
         hint = "Europe"
         return hint
     elif coordinates['x'] < 35 and coordinates['y'] > -33 and coordinates['y'] < 61:
@@ -21,8 +21,7 @@ def Hint():
         hint = "The Americas"
         return hint
     else:
-        hint = "Asia and Oceania"
+        hint = "Asia & Oceania"
         return hint
 
-if __name__ == "__main__": 
-    app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == "__main__": app.run(host="0.0.0.0", port=5000, debug=True)
