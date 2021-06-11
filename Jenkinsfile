@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Configuration Management') {
             steps {
-                sh 'cd ansible && ansible-playbook -i inventory.yaml playbook.yaml'
+                sh 'cd ansible && ~/.local/bin/ansible-playbook -i inventory.yaml playbook.yaml'
             }
         }
         stage('Deploy') {
