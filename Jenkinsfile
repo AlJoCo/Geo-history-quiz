@@ -27,14 +27,12 @@ pipeline {
         }
         stage('Configuration Management') {
             steps {
-                //ansible-playbook -i inventory.yaml playbook.yaml
-                sh 'echo config'
+                sh 'cd ansible && ~/.local/bin/ansible-playbook -i inventory.yaml playbook.yaml'
             }
         }
         stage('Deploy') {
             steps {
-                //create swarm infastructure
-                sh 'echo deploy'
+                sh 'bash jenkins/deploy.sh'
             }
         }
     }
