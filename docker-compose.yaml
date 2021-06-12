@@ -11,15 +11,23 @@ services:
         environment:
             DATABASE_URI: ${DATABASE_URI}
             SECRET_KEY: ${SECRET_KEY}
+        deploy:
+            replicas: 3
     service-2:
         container_name: service-2
         image: aljoco/service-2:latest
         build: ./service-2
+        deploy:
+            replicas: 3
     service-3:
         container_name: service-3
         image: aljoco/service-3:latest
         build: ./service-3
+        deploy:
+            replicas: 3
     service-4:
         container_name: service-4
         image: aljoco/service-4:latest
         build: ./service-4
+        deploy:
+            replicas: 3
