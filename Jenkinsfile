@@ -3,6 +3,8 @@ pipeline {
     environment {
         DOCKER_USERNAME = credentials('DOCKER_USERNAME')
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+        DATABASE_URI = credentials('DATABASE_URI')
+        SECRET_KEY = credentials('SECRET_KEY')
         install = "false"
     }
     stages {
