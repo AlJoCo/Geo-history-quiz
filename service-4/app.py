@@ -5,7 +5,10 @@ app = Flask(__name__)
 @app.route('/get_hint', methods=['GET', 'POST'])
 def Hint():
     coordinates = request.get_json()
-    if coordinates['x'] > 72:
+    if coordinates['x'] > 85:
+        hint = "Orbit"
+        return hint
+    elif coordinates['x'] > 72:
         hint = "The Arctic"
         return hint
     elif coordinates['x'] < -60:
