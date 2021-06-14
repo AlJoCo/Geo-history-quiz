@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/get_coords', methods=['GET', 'POST'])
 def coords():
     z = []
-    x = random.randrange(-85, 85)
+    x = random.randrange(-85, 130)
     z.append(x)
     y = random.randrange(-180, 180)
     z.append(y)

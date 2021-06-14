@@ -34,7 +34,7 @@ def home():
     json={'x':coords['coordinates'][0],
     'y':coords['coordinates'][1]}).text
     #form = Form()
-    queryall = Storage.query.order_by(Storage.id.desc()).all()
+    queryall = Storage.query.order_by(Storage.id.desc()).limit(20).all()
     #if form.validate_on_submit():
     coords1 = (coords['coordinates'][0])
     coords2 = (coords['coordinates'][1])

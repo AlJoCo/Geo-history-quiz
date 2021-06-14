@@ -11,4 +11,4 @@ class Test_get_coords(TestBase):
     def test_get_coords(self):
         response = self.client.get(url_for('coords'))
         self.assertEqual(response.status_code, 200)        
-        self.assertTrue(response.json['coordinates'][0] < 86 and response.json['coordinates'][1] < 180)
+        self.assertTrue(response.json['coordinates'][0] < 131 and response.json['coordinates'][1] < 180)
