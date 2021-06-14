@@ -1,21 +1,30 @@
-import requests
-from flask import Flask, render_template, redirect, url_for, request
-from flask_sqlalchemy import SQLAlchemy
-from os import getenv
+from flask import Flask, request
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///data.db"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
-app.config['SECRET_KEY'] = "fdgsdfsdfg"
+@app.route('/get_hint', methods=['GET', 'POST'])
+def Hint():
+    coordinates = request.get_json()
+    if coordinates['x'] > 85:
+        hint = "Orbit"
+        return hint
+    elif coordinates['x'] > 72:
+        hint = "The Arctic"
+        return hint
+    elif coordinates['x'] < -60:
+        hint = "Antarctica"
+        return hint
+    elif coordinates['x'] > 34 and coordinates['y'] > -33 and coordinates['y'] < 46:
+        hint = "Europe"
+        return hint
+    elif coordinates['x'] < 35 and coordinates['y'] > -33 and coordinates['y'] < 61:
+        hint = "Africa & Middle East"
+        return hint
+    elif coordinates['y'] < -32:
+        hint = "The Americas"
+        return hint
+    else:
+        hint = "Asia & Oceania"
+        return hint
 
-db = SQLAlchemy(app) 
-
-class Storage(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    longitude = db.Column(db.String(50), nullable=False)
-    #y axis
-    latitude = db.Column(db.String(50), nullable=False)
-    #x axis
-    Date = db.Column(db.String(50), nullable=False)
-    Survivable = db.Column(db.Boolean)
+if __name__ == "__main__": app.run(host="0.0.0.0", port=5000, debug=True)

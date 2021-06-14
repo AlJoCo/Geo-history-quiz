@@ -1,24 +1,33 @@
-version: "3.8"
+version: '3.8'
 services:
     service-1:
         container_name: service-1
-        image: 
+        image: aljoco/service-1:latest
         build: ./service-1
-        deploy:
-            replicas: 4
         ports:
         - published: 5000
           target: 5000
           protocol: tcp
+        environment:
+            DATABASE_URI: ${DATABASE_URI}
+            SECRET_KEY: ${SECRET_KEY}
+        deploy:
+            replicas: 3
     service-2:
         container_name: service-2
-        image: 
+        image: aljoco/service-2:latest
         build: ./service-2
         deploy:
-            replicas: 4
+            replicas: 3
     service-3:
         container_name: service-3
-        image: 
+        image: aljoco/service-3:latest
         build: ./service-3
         deploy:
-            replicas: 4
+            replicas: 3
+    service-4:
+        container_name: service-4
+        image: aljoco/service-4:latest
+        build: ./service-4
+        deploy:
+            replicas: 3
